@@ -10,7 +10,6 @@ const app = express()
 
 const authTokens = {}
 
-
 const getHashedPassword = (password) => {
     const sha256 = crypto.createHash('sha256')
     return sha256.update(password).digest('base64')
@@ -19,7 +18,6 @@ const getHashedPassword = (password) => {
 const generateAuthToken = () => {
     return crypto.randomBytes(30).toString('hex')
 }
-
 
 // to support URL-encoded bodies
 app.use(bodyParser.urlencoded({extended: true}))
@@ -38,15 +36,22 @@ app.engine('hbs', exphbs.engine({
 
 app.set('view engine', 'hbs')
 
-//const pool = require("../db/dbconfig")
+//Database
+const pool = require("../db/dbconfig")
 
 
 app.get('/', (req, res) => {
     res.redirect("/home")
 });
+app.get('/home', (req, res) => {
+    const cmd = "SELECT * FROM snows"
 
-app.get('/home', function (req, res) {res.render('home')}
-)
+    pool.query(cmd, (err, rows, fields) => {
+        if (err) throw err;
+        res.render('home')
+    })
+})
+
 
 app.get('/about', (req, res) => {
     res.render('about')
