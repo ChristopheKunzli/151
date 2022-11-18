@@ -50,9 +50,10 @@ app.get('/', (req, res) => {
 app.get('/home', (req, res) => {
     const cmd = "SELECT * FROM snows"
 
-    pool.query(cmd, (err, rows, fields) => {
+    pool.query(cmd, (err) => {
         if (err) throw err;
-        res.render('home', {row: rows})
+    }).then(r => {
+        res.render('home', {row: r})
     })
 })
 

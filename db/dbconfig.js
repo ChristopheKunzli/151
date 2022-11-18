@@ -6,10 +6,5 @@ const pool = mariadb.createPool({
     password: 'Pa$$w0rd',
     database: 'test'
 })
-/*
-connection.connect((error) => {
-    if (error) throw error
-    console.log('connection to db complete')
-})
-*/
+
 module.exports = pool
