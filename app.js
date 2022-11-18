@@ -39,10 +39,14 @@ app.set('view engine', 'hbs')
 //Database
 const pool = require("../db/dbconfig")
 
+//========================================================================//
+// Routes
+//========================================================================//
 
 app.get('/', (req, res) => {
     res.redirect("/home")
 });
+
 app.get('/home', (req, res) => {
     const cmd = "SELECT * FROM snows"
 
@@ -52,9 +56,9 @@ app.get('/home', (req, res) => {
     })
 })
 
-
 app.get('/about', (req, res) => {
     res.render('about')
 })
+//========================================================================//
 
 app.listen(8080)
