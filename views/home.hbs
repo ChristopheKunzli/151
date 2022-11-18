@@ -1,6 +1,15 @@
 <h2>Welcome home</h2>
 <p>fesfesf</p>
 
-{{#each row}}
-    <h2>{{this.name}}</h2>
-{{/each}}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    {{#each row}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.name}}</td>
+        </tr>
+    {{/each}}
+</table>
