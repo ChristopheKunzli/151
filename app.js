@@ -37,7 +37,7 @@ app.engine('hbs', exphbs.engine({
 app.set('view engine', 'hbs')
 
 //Database
-const pool = require("../db/dbconfig")
+const pool = require("./db/dbconfig")
 
 //========================================================================//
 // Routes
@@ -52,7 +52,7 @@ app.get('/home', (req, res) => {
 
     pool.query(cmd, (err, rows, fields) => {
         if (err) throw err;
-        res.render('home')
+        res.render('home', {row: rows})
     })
 })
 

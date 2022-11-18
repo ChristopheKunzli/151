@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="afe338c7-d5e2-47bb-83e6-0dc960d40904" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +37,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.12.1&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.11.9&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Christophe.KUNZLI/IdeaProjects/151/app.js&quot;,
     &quot;nodejs_interpreter_path&quot;: &quot;C:/Program Files/nodejs/node&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;C:\\Program Files\\nodejs\\npm&quot;,
@@ -70,7 +71,9 @@
       <workItem from="1668755740025" duration="4039000" />
       <workItem from="1668759808948" duration="428000" />
       <workItem from="1668760266188" duration="839000" />
-      <workItem from="1668761116949" duration="324000" />
+      <workItem from="1668761116949" duration="622000" />
+      <workItem from="1668762229675" duration="73000" />
+      <workItem from="1668769072604" duration="658000" />
     </task>
     <servers />
   </component>
