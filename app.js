@@ -64,62 +64,38 @@ app.get('/home', (req, res) => {
     pool.query(cmd, (err) => {
         if (err) throw err;
     }).then(r => {
-        res.render('home', {row: r})
+        res.render('home', {row: r, title: "Home"})
     })
 })
 
 app.get('/contact', (req, res) => {
-    res.render('contact')
+    res.render('contact', {title: "contact"})
+})
+
+app.get('/about', (req, res) => {
+    res.render('about', {title: "About"})
 })
 
 app.post('/auth', (req, res) => {
     const mail = req.body.email
     const pass = req.body.password
 
-    const cmd = "INSERT INTO users ('email', 'password') VALUES ('test@cpnv.ch', 'passassass');"
+    const insertNewUser = "INSERT INTO users SET email = '" + mail + "', password = '" + pass + "';"
+    const selectUser = "SELECT * FROM users WHERE email = '" + mail + "' AND password = '" + pass + "';"
 
     if (mail && pass) {
-        pool.query(cmd, (error, res, fields) =>{
-            if(error) throw error
-            res.redirect('/about')
+        pool.query(selectUser, (error, res, fields) => {
+            if (error) throw error
+        }).then(r => {
+            if (r.length === 1) {
+                res.redirect('/about')
+            } else {
+                res.render('contact', {message: "Adresse email ou mot de passe incorrect"})
+            }
         })
     } else {
-        res.redirect('/contact')
+        res.render('contact', {message: "Adresse email ou mot de passe pas rempli"})
     }
-})
-
-/**
- app.post('/auth', (req, res) => {
-// Capture the input fields
-    let user_email = req.body.email;
-    let password = req.body.userPswd;
-    // Ensure the input fields exists and are not empty
-    if (user_email && password) {
-        // Execute SQL query that'll select the account from the database based on the specified username and password
-        pool.query('SELECT * FROM users WHERE email = ? AND password = ?', [user_email, password], (error, results, fields) => {
-            // If there is an issue with the query, output the error
-            if (error) throw error;
-            // If the account exists
-            if (results.length > 0) {
-                // Authenticate the user
-                req.session.loggedin = true;
-                req.session.username = user_email;
-                // Redirect to home page
-                res.redirect('/home');
-            } else {
-                res.send('Incorrect Username and/or Password!');
-            }
-            res.end();
-        });
-    } else {
-        res.send('Please enter Username and Password!');
-        res.end();
-    }
-})
- */
-
-app.get('/about', (req, res) => {
-    res.render('about')
 })
 //========================================================================//
 
