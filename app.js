@@ -32,15 +32,16 @@ app.use((req, res, next) => {
 
 //========================================================================//
 // Static files
-//TODO move directories away from root dir
 //========================================================================//
-app.use('/images', express.static('images'))
+app.use('/images', express.static('views/images'))
 
-app.use('/css', express.static('css'))
+app.use('/css', express.static('views/css'))
 
-app.use('/js', express.static('js'))
+app.use('/js', express.static('views/js'))
 
-app.use('/vendor', express.static('vendor'))
+app.use('/vendor', express.static('views/vendor'))
+
+app.use('/fonts', express.static('views/fonts'))
 //========================================================================//
 
 app.engine('hbs', exphbs.engine({
