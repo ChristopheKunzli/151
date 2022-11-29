@@ -42,42 +42,42 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 @font-face {
   font-family: Montserrat-Regular;
-  src: url('views/fonts/montserrat/Montserrat-Regular.ttf');
+  src: url('../fonts/montserrat/Montserrat-Regular.ttf');
 }
 
 @font-face {
   font-family: Montserrat-Medium;
-  src: url('views/fonts/montserrat/Montserrat-Medium.ttf');
+  src: url('../fonts/montserrat/Montserrat-Medium.ttf');
 }
 
 @font-face {
   font-family: Montserrat-Bold;
-  src: url('views/fonts/montserrat/Montserrat-Bold.ttf');
+  src: url('../fonts/montserrat/Montserrat-Bold.ttf');
 }
 
 @font-face {
   font-family: Montserrat-Italic;
-  src: url('views/fonts/montserrat/Montserrat-Italic.ttf');
+  src: url('../fonts/montserrat/Montserrat-Italic.ttf');
 }
 
 @font-face {
   font-family: Montserrat-Black;
-  src: url('views/fonts/montserrat/Montserrat-Black.ttf');
+  src: url('../fonts/montserrat/Montserrat-Black.ttf');
 }
 
 @font-face {
   font-family: Linearicons;
-  src: url('views/fonts/Linearicons-Free-v1.0.0/WebFont/Linearicons-Free.ttf');
+  src: url('../fonts/Linearicons-Free-v1.0.0/WebFont/Linearicons-Free.ttf');
 }
 
 @font-face {
   font-family: Poppins-Bold;
-  src: url('views/fonts/poppins/Poppins-Bold.ttf');
+  src: url('../fonts/poppins/Poppins-Bold.ttf');
 }
 
 @font-face {
   font-family: Poppins-Black;
-  src: url('views/fonts/poppins/Poppins-Black.ttf');
+  src: url('../fonts/poppins/Poppins-Black.ttf');
 }
 
 /*[ RESTYLE TAG ]
@@ -1107,7 +1107,7 @@ li.sale-noti > a {
 
 .side-menu .sub-menu > li {
   padding-left: 12px;
-  padding-top: 
+  padding-top:0px
 }
 
 .side-menu .sub-menu a:hover {
