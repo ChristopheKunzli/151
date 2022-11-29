@@ -77,6 +77,13 @@ app.get('/contact', (req, res) => {
     res.render('contact')
 })
 
+app.get('/blog', (req, res) => {
+    res.render('blog')
+})
+app.get('/blog/blog-detail', (req, res) => {
+    res.render('blog-detail')
+})
+
 app.get('/about', (req, res) => {
     res.render('about')
 })
