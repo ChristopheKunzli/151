@@ -60,6 +60,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/home', (req, res) => {
+    res.render('home')
+    /*
     const cmd = "SELECT * FROM snows"
 
     pool.query(cmd, (err) => {
@@ -67,14 +69,16 @@ app.get('/home', (req, res) => {
     }).then(r => {
         res.render('home', {row: r, title: "Home"})
     })
+    */
+
 })
 
 app.get('/contact', (req, res) => {
-    res.render('contact', {title: "contact"})
+    res.render('contact')
 })
 
 app.get('/about', (req, res) => {
-    res.render('about', {title: "About"})
+    res.render('about')
 })
 
 app.post('/auth', (req, res) => {
