@@ -96,6 +96,10 @@ app.get('/product-detail', (req, res) => {
     res.render('product-detail')
 })
 
+app.get('/cart', (req, res) => {
+    res.render('cart')
+})
+
 app.post('/auth', (req, res) => {
     const mail = req.body.email
     const pass = req.body.password
