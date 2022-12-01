@@ -55,72 +55,9 @@ app.set('view engine', 'hbs')
 // Routes
 //========================================================================//
 
-app.get('/', (req, res) => {
-    res.redirect("/home")
-});
+require('./controllers/routes_get')(app)
 
-app.get('/home', (req, res) => {
-    res.render('home')
-    /*
-    const cmd = "SELECT * FROM snows"
-
-    pool.query(cmd, (err) => {
-        if (err) throw err;
-    }).then(r => {
-        res.render('home', {row: r, title: "Home"})
-    })
-    */
-
-})
-
-app.get('/contact', (req, res) => {
-    res.render('contact')
-})
-
-app.get('/blog', (req, res) => {
-    res.render('blog')
-})
-app.get('/blog/blog-detail', (req, res) => {
-    res.render('blog-detail')
-})
-
-app.get('/about', (req, res) => {
-    res.render('about')
-})
-
-app.get('/product', (req, res) => {
-    res.render('product')
-})
-
-app.get('/product-detail', (req, res) => {
-    res.render('product-detail')
-})
-
-app.get('/cart', (req, res) => {
-    res.render('cart')
-})
-
-app.post('/auth', (req, res) => {
-    const mail = req.body.email
-    const pass = req.body.password
-
-    const insertNewUser = "INSERT INTO users SET email = '" + mail + "', password = '" + pass + "';"
-    const selectUser = "SELECT * FROM users WHERE email = '" + mail + "' AND password = '" + pass + "';"
-
-    if (mail && pass) {
-        pool.query(selectUser, (error, res, fields) => {
-            if (error) throw error
-        }).then(r => {
-            if (r.length === 1) {
-                res.redirect('/about')
-            } else {
-                res.render('contact', {message: "Adresse email ou mot de passe incorrect"})
-            }
-        })
-    } else {
-        res.render('contact', {message: "Adresse email ou mot de passe pas rempli"})
-    }
-})
+require('./controllers/routes_post')(app)
 //========================================================================//
 
 app.listen(8080)
