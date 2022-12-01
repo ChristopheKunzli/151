@@ -88,6 +88,10 @@ app.get('/about', (req, res) => {
     res.render('about')
 })
 
+app.get('/product', (req, res) => {
+    res.render('product')
+})
+
 app.post('/auth', (req, res) => {
     const mail = req.body.email
     const pass = req.body.password
