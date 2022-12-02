@@ -1,4 +1,4 @@
-const pool = require('../db/dbconfig')
+const pool = require('../models/dbconfig')
 
 module.exports = (app) => {
 

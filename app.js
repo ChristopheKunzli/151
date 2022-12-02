@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 
 const app = express()
 
-const pool = require('./db/dbconfig')
+const pool = require('./models/dbconfig')
 
 const crypto = require('crypto')
 const authTokens = {}
