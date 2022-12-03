@@ -36,7 +36,16 @@ module.exports = (app) => {
     })
 
     app.get('/product', (req, res) => {
-        res.render('product')
+        const cmd = "SELECT * from snows"
+
+        pool.query(cmd, (err) => {
+            if (err) throw err;
+        }).then(r => {
+            r.forEach((row) => {
+                row["photo"] = row["photo"].substring(14)
+            })
+            res.render('product', {products: r})
+        })
     })
 
     app.get('/product-detail', (req, res) => {
