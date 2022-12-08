@@ -42,7 +42,7 @@ module.exports = (app) => {
             if (err) throw err;
         }).then(r => {
             r.forEach((row) => {
-                row["photo"] = row["photo"].substring(14)
+                row["photo"] = row["photo"].substring(13)
             })
             res.render('product', {products: r})
         })
