@@ -1,6 +1,6 @@
 const pool = require('../models/dbconfig')
 
-module.exports = (app, authTokens) => {
+module.exports = (app) => {
 
     app.get('/', (req, res) => {
         res.redirect("/home")

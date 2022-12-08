@@ -55,15 +55,13 @@ app.set('view engine', 'hbs')
 // Routes
 //========================================================================//
 
-require('./controllers/routes_get')(app, authTokens)
+require('./controllers/routes_get')(app)
 
 //require('./controllers/routes_post')(app, pool)
 
 app.post('/auth', (req, res) => {
     const mail = req.body.email
     const pass = req.body.password
-
-    //console.log(req.body.email)
 
     const cmd = "SELECT userEmailAddress, userHashPsw, pseudo FROM snows.users WHERE userEmailAddress='" + mail + "';"
 
