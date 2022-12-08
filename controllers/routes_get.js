@@ -42,14 +42,23 @@ module.exports = (app) => {
             if (err) throw err;
         }).then(r => {
             r.forEach((row) => {
-                row["photo"] = row["photo"].substring(13)
+                row["photo"] = row["photo"].substring(12)
             })
             res.render('product', {products: r})
         })
     })
 
-    app.get('/product-detail', (req, res) => {
-        res.render('product-detail')
+    app.get('/product-detail/:id', (req, res) => {
+        const id = req.params.id
+        const cmd = "SELECT * FROM snows WHERE id = " + id
+        pool.query(cmd, (err, res) => {
+            if (err) throw err
+        }).then(r => {
+            r.forEach((row) => {
+                row["photo"] = row["photo"].substring(12)
+            })
+            res.render('product-detail', {snow: r})
+        })
     })
 
     app.get('/cart', (req, res) => {
