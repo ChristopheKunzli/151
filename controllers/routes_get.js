@@ -1,51 +1,45 @@
 const pool = require('../models/dbconfig')
 
-module.exports = (app) => {
+module.exports = (app, authTokens) => {
 
     app.get('/', (req, res) => {
         res.redirect("/home")
     });
 
     app.get('/home', (req, res) => {
-        res.render('home')
-        /*
-        const cmd = "SELECT * FROM snows"
-
-        pool.query(cmd, (err) => {
-            if (err) throw err;
-        }).then(r => {
-            res.render('home', {row: r, title: "Home"})
-        })
-        */
-
+        res.render("home", {email: req.user})
     })
 
     app.get('/contact', (req, res) => {
-        res.render('contact')
+        res.render('contact', {email: req.user})
     })
 
     app.get('/blog', (req, res) => {
-        res.render('blog')
+        res.render('blog', {email: req.user})
     })
     app.get('/blog/blog-detail', (req, res) => {
-        res.render('blog-detail')
+        res.render('blog-detail', {email: req.user})
     })
 
     app.get('/about', (req, res) => {
-        res.render('about')
+        res.render('about', {email: req.user})
     })
 
     app.get('/product', (req, res) => {
-        const cmd = "SELECT * from snows"
+        if (req.user) {
+            const cmd = "SELECT * from snows"
 
-        pool.query(cmd, (err) => {
-            if (err) throw err;
-        }).then(r => {
-            r.forEach((row) => {
-                row["photo"] = row["photo"].substring(12)
+            pool.query(cmd, (err) => {
+                if (err) throw err;
+            }).then(r => {
+                r.forEach((row) => {
+                    row["photo"] = row["photo"].substring(12)
+                })
+                res.render('product', {products: r, email: req.user})
             })
-            res.render('product', {products: r})
-        })
+        } else {
+            res.render('contact', {message: "Veuillez vous connecter pour accéder cette page"})
+        }
     })
 
     app.get('/product-detail/:id', (req, res) => {
@@ -57,11 +51,11 @@ module.exports = (app) => {
             r.forEach((row) => {
                 row["photo"] = row["photo"].substring(12)
             })
-            res.render('product-detail', {snow: r})
+            res.render('product-detail', {snow: r, email: req.user})
         })
     })
 
     app.get('/cart', (req, res) => {
-        res.render('cart')
+        res.render('cart', {email: req.user})
     })
 }

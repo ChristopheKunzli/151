@@ -52,8 +52,10 @@
 
             <div class="topbar-child2">
 					<span class="topbar-email">
-						fashe@example.com
-					</span>
+                        {{# if email}}
+                            {{email}}
+                        {{/if}}
+                    </span>
 
                 <div class="topbar-language rs1-select2">
                     <select class="selection-1" name="time">
@@ -82,9 +84,18 @@
                             <a href="/product">Nos snows</a>
                         </li>
 
-                        <li>
-                            <a href="/contact">Login</a>
-                        </li>
+                        {{#if email}}
+                            <li>
+                                <a href="/gestion">Gestion</a>
+                            </li>
+                            <li>
+                                <a href="/logout">Logout</a>
+                            </li>
+                        {{else}}
+                            <li>
+                                <a href="/contact">Login</a>
+                            </li>
+                        {{/if}}
                     </ul>
                 </nav>
             </div>
@@ -295,8 +306,10 @@
                 <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
                     <div class="topbar-child2-mobile">
 							<span class="topbar-email">
-								fashe@example.com
-							</span>
+                                {{# if email}}
+                                    {{email}}
+                                {{/if}}
+                            </span>
 
                         <div class="topbar-language rs1-select2">
                             <select class="selection-1" name="time">
