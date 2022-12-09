@@ -78,10 +78,9 @@ app.post('/auth', (req, res) => {
                     res.cookie('AuthToken', authToken);
 
                     res.redirect('/home')
-                } else {
-                    res.render('contact', {message: "Adresse email ou mot de passe incorrect"})
                 }
             })
+            res.render('contact', {message: "Adresse email ou mot de passe incorrect"})
         })
     } else {
         res.render('contact', {message: "Adresse email ou mot de passe pas rempli"})
