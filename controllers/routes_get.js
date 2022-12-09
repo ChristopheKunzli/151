@@ -63,7 +63,7 @@ module.exports = (app) => {
         pool.query("SELECT * FROM snows", (err, res) => {
             if (err) throw err
         }).then(r => {
-            res.render('gestion', {snows: r})
+            res.render('gestion', {snows: r, email: req.user})
         })
     })
 }
