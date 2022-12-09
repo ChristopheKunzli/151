@@ -58,4 +58,12 @@ module.exports = (app) => {
     app.get('/cart', (req, res) => {
         res.render('cart', {email: req.user})
     })
+
+    app.get('/gestion', (req, res) => {
+        pool.query("SELECT * FROM snows", (err, res) => {
+            if (err) throw err
+        }).then(r => {
+            res.render('gestion', {snows: r})
+        })
+    })
 }
