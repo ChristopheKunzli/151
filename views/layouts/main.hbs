@@ -339,9 +339,18 @@
                     <a href="/product">Nos snows</a>
                 </li>
 
-                <li class="item-menu-mobile">
-                    <a href="/contact">Login</a>
-                </li>
+                {{#if email}}
+                    <li class="item-menu-mobile">
+                        <a href="/gestion">Gestion</a>
+                    </li>
+                    <li class="item-menu-mobile">
+                        <a href="/logout">Logout</a>
+                    </li>
+                {{else}}
+                    <li>
+                        <a href="/contact">Login</a>
+                    </li>
+                {{/if}}
             </ul>
         </nav>
     </div>

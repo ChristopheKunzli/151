@@ -3,12 +3,14 @@
         padding-right: 32px;
     }
 
-    table * {
-        border: black 2px solid;
-    }
 
     table {
         text-align: center;
+    }
+
+    td {
+        padding: 4px;
+        border: 2px black solid;
     }
 
 </style>
@@ -22,6 +24,8 @@
         <th>dailyPrice</th>
         <th>photo</th>
         <th>active</th>
+        <th>Delete</th>
+        <th>Edit</th>
     </tr>
     {{#each snows}}
         <tr>
@@ -33,6 +37,13 @@
             <td>{{this.dailyPrice}}</td>
             <td>{{this.photo}}</td>
             <td>{{this.active}}</td>
+            <td>
+                <form action="/delete/{{this.id}}" method="post"><input type="submit" value="Supprimer"></form>
+            </td>
+            <td>
+                <form action="/gestion/edit/{{this.id}}" method="get"><input type="submit" value="Modifier"></form>
+            </td>
         </tr>
     {{/each}}
 </table>
+<div>{{message}}</div>

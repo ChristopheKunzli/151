@@ -57,7 +57,7 @@ app.set('view engine', 'hbs')
 
 require('./controllers/routes_get')(app)
 
-//require('./controllers/routes_post')(app, pool)
+require('./controllers/routes_post')(app, pool)
 
 app.post('/auth', (req, res) => {
     const mail = req.body.email

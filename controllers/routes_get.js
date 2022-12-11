@@ -26,20 +26,16 @@ module.exports = (app) => {
     })
 
     app.get('/product', (req, res) => {
-        if (req.user) {
-            const cmd = "SELECT * from snows"
+        const cmd = "SELECT * from snows"
 
-            pool.query(cmd, (err) => {
-                if (err) throw err;
-            }).then(r => {
-                r.forEach((row) => {
-                    row["photo"] = row["photo"].substring(12)
-                })
-                res.render('product', {products: r, email: req.user})
+        pool.query(cmd, (err) => {
+            if (err) throw err;
+        }).then(r => {
+            r.forEach((row) => {
+                row["photo"] = row["photo"].substring(13)
             })
-        } else {
-            res.render('contact', {message: "Veuillez vous connecter pour accéder cette page"})
-        }
+            res.render('product', {products: r, email: req.user})
+        })
     })
 
     app.get('/product-detail/:id', (req, res) => {
@@ -60,10 +56,24 @@ module.exports = (app) => {
     })
 
     app.get('/gestion', (req, res) => {
-        pool.query("SELECT * FROM snows", (err, res) => {
-            if (err) throw err
+        if (req.user) {
+            pool.query("SELECT * FROM snows", (err, res) => {
+                if (err) throw err
+            }).then(r => {
+                res.render('gestion', {snows: r, email: req.user})
+            })
+        } else {
+            res.render('contact', {message: "Veuillez vous connecter pour accéder cette page"})
+        }
+    })
+
+    app.get('/gestion/edit/:id', (req, res) => {
+        const id = req.params.id
+        const cmd = "SELECT * FROM snows WHERE id = " + id
+        pool.query(cmd, (err, res) => {
+            if(err) throw err
         }).then(r => {
-            res.render('gestion', {snows: r, email: req.user})
+            res.render('edit', {snow: r[0], email: req.user})
         })
     })
 }
