@@ -71,8 +71,7 @@ app.post('/auth', (req, res) => {
 
         }).then(r => {
             r.forEach(row => {
-                if (row["userEmailAddress"] === mail && row["userHashPsw"] === hashPass
-                ) {
+                if (row["userEmailAddress"] === mail && row["userHashPsw"] === hashPass) {
                     const authToken = generateAuthToken()
                     authTokens[authToken] = mail;
 
