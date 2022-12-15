@@ -60,6 +60,9 @@ module.exports = (app) => {
             pool.query("SELECT * FROM snows", (err, res) => {
                 if (err) throw err
             }).then(r => {
+                r.forEach((row) => {
+                    row["photo"] = row["photo"].substring(12)
+                })
                 res.render('gestion', {snows: r, email: req.user})
             })
         } else {
