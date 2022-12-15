@@ -62,6 +62,7 @@ module.exports = (app) => {
             }).then(r => {
                 r.forEach((row) => {
                     row["photo"] = row["photo"].substring(12)
+                    console.log(row["photo"])
                 })
                 res.render('gestion', {snows: r, email: req.user})
             })
@@ -78,5 +79,28 @@ module.exports = (app) => {
         }).then(r => {
             res.render('edit', {snow: r[0], email: req.user})
         })
+    })
+
+    app.get('/delete/:id', (req, res) => {
+        if (req.user) {
+            const id = req.params.id
+            const cmd = "DELETE FROM snows WHERE id = " + id
+
+            pool.query(cmd, (err, res) => {
+                if (err) throw err
+            }).then(() => {
+                pool.query('SELECT * FROM snows', (err, res) => {
+                    if (err) throw err
+                }).then(r => {
+                    r.forEach((row) => {
+                        row["photo"] = row["photo"].substring(12)
+                        console.log(row["photo"])
+                    })
+                    res.redirect('/gestion')
+                })
+            })
+        } else {
+            res.render('contact', {message: "Veuillez vous connecter pour accéder à cette page"})
+        }
     })
 }

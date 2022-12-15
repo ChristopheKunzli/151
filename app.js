@@ -61,11 +61,12 @@ require('./controllers/routes_post')(app, pool)
 
 app.post('/auth', (req, res) => {
     const mail = req.body.email
-    const hashPass = getHashedPassword(req.body.password)
+    const pass = req.body.password
+    const hashPass = getHashedPassword(pass)
 
     const cmd = "SELECT userEmailAddress, userHashPsw, pseudo FROM snows.users WHERE userEmailAddress='" + mail + "';"
 
-    if (mail && hashPass) {
+    if (mail && pass) {
         pool.query(cmd, (error, res) => {
             if (error) throw error
 

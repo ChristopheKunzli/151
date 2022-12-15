@@ -31,7 +31,7 @@
                             <td class="column-5">{{this.qtyAvailable}}</td>
                             <td class="column-6">{{this.dailyPrice}}</td>
                             <td class="column-7"><a href="/gestion/edit/{{this.id}}">Edit</a></td>
-                            <td class="column-8"><form method="post" action="/delete/{{this.id}}"><input type="submit" value="Delete"></form></td>
+                            <td class="column-8"><a href="/delete/{{this.id}}">Delete</a></td>
                         </tr>
                     {{/each}}
                 </table>
