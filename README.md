@@ -1,7 +1,7 @@
 # 151 snows
 ### To setup the project on your local machine:
 - npm - install
-- create file db/dbconfig.js (enter the name of aour db and the credentials to use to access that db)
+- create file models/dbconfig.js (enter the name of your db and the credentials to use to access that db)
 - run following script to create the sample database
 
 ``` sql
