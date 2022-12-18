@@ -83,7 +83,7 @@ module.exports = (app) => {
 
     app.get('/gestion/add', (req, res) => {
         if (req.user) {
-            res.render('addArticle')
+            res.render('addArticle', {email: req.user})
         } else {
             res.render('contact', {message: "Veuillez vous connecter pour accéder à cette page"})
         }
