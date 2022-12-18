@@ -75,7 +75,7 @@ module.exports = (app) => {
         const id = req.params.id
         const cmd = "SELECT * FROM snows WHERE id = " + id
         pool.query(cmd, (err, res) => {
-            if(err) throw err
+            if (err) throw err
         }).then(r => {
             res.render('edit', {snow: r[0], email: req.user})
         })
@@ -103,4 +103,13 @@ module.exports = (app) => {
             res.render('contact', {message: "Veuillez vous connecter pour accéder à cette page"})
         }
     })
+/**
+    app.get('/cart', (req, res) => {
+        if (req.user) {
+
+        } else {
+            res.render('contact', {message: "veuillez vous connecter pour accéder à cette page"})
+        }
+    })
+ */
 }

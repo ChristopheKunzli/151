@@ -10,12 +10,15 @@
                     <tr class="table-head">
                         <th class="column-1">Photo</th>
                         <th class="column-2">Full Name</th>
-                        <th class="column-3">Length</th>
-                        <th class="column-4">Description</th>
-                        <th class="column-5">Quantitiy</th>
-                        <th class="column-6">Price</th>
-                        <th class="column-7">Edit</th>
-                        <th class="column-8">Delete</th>
+                        <th class="column-2">Length</th>
+                        <th class="column-2">Description</th>
+                        <th class="column-2">Quantitiy</th>
+                        <th class="column-2">Price</th>
+                        <th class="column-2"><a href="/gestion/add">
+                            <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                                Ajouter
+                            </button>
+                        </a></th>
                     </tr>
 
                     {{#each snows}}
@@ -26,12 +29,22 @@
                                 </div>
                             </td>
                             <td class="column-2">{{this.code}} {{this.brand}} {{this.model}}</td>
-                            <td class="column-3">{{this.snowLength}}</td>
-                            <td class="column-4">{{this.description}}</td>
-                            <td class="column-5">{{this.qtyAvailable}}</td>
-                            <td class="column-6">{{this.dailyPrice}}</td>
-                            <td class="column-7"><a href="/gestion/edit/{{this.id}}">Edit</a></td>
-                            <td class="column-8"><a href="/delete/{{this.id}}">Delete</a></td>
+                            <td class="column-2">{{this.snowLength}}</td>
+                            <td class="column-2">{{this.description}}</td>
+                            <td class="column-2">{{this.qtyAvailable}}</td>
+                            <td class="column-2">{{this.dailyPrice}}</td>
+                            <td class="column-2">
+                                <a href="/delete/{{this.id}}">
+                                    <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4"><img
+                                            src="/images/icons/bin2.png" alt="delete"></button>
+                                </a>
+                                <br>
+                                <a href="/gestion/edit/{{this.id}}">
+                                    <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                                        <img src="/images/icons/pencil2.png" alt="update">
+                                    </button>
+                                </a>
+                            </td>
                         </tr>
                     {{/each}}
                 </table>
