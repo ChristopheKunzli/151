@@ -81,6 +81,14 @@ module.exports = (app) => {
         })
     })
 
+    app.get('/gestion/add', (req, res) => {
+        if (req.user) {
+            res.render('addArticle')
+        } else {
+            res.render('contact', {message: "Veuillez vous connecter pour accéder à cette page"})
+        }
+    })
+
     app.get('/delete/:id', (req, res) => {
         if (req.user) {
             const id = req.params.id
@@ -103,13 +111,4 @@ module.exports = (app) => {
             res.render('contact', {message: "Veuillez vous connecter pour accéder à cette page"})
         }
     })
-/**
-    app.get('/cart', (req, res) => {
-        if (req.user) {
-
-        } else {
-            res.render('contact', {message: "veuillez vous connecter pour accéder à cette page"})
-        }
-    })
- */
 }
