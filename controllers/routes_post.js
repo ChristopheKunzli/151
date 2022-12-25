@@ -1,11 +1,30 @@
 module.exports = (app, pool) => {
     app.post('/add', (req, res) => {
-        //TODO check if user is logged in
+        //Check if the user is logged in
+        if (!req.user) {
+            res.render('contact', {message: "Veuillez vous connecter pour accéder cette page"})
+            return
+        }
 
-        //TODO fetch all data of the form
+        //Retrieve all data from the form
+        const code = req.body.code
+        const brand = req.body.brand
+        const model = req.body.model
+        const snowLength = req.body.snowLength
+        const qtyAvailable = req.body.qtyAvailable
+        const description = req.body.description
+        const dailyPrice = req.body.dailyPrice
+        const active = req.body.active
+        const photo = req.body.photo
 
-        //TODO build the INSERT INTO sql query
+        //Build the query
+        const cmd = "INSERT INTO snows (code, brand, model, snowLength, qtyAvailable, description, dailyPrice, photo, active) VALUES ('" + code + "', '" + brand + "', '" + model + "', '" + snowLength + "', '" + qtyAvailable + "', '" + description + "', '" + dailyPrice + "', '" + photo + "', '" + active + "')"
 
-        //TODO execute the query into the db and redirect the user to management page
+        //Execute the query and redirect the user to management page
+        pool.query(cmd, (err, res) => {
+            if (err) throw err
+        }).then(r => {
+            res.redirect('/gestion')
+        })
     })
 }
