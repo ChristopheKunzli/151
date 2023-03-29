@@ -1,5 +1,7 @@
 # 151 snows
 ### To setup the project on your local machine:
+- git clone
+- install node and npm
 - npm - install
 - create file models/dbconfig.js (enter the name of your db and the credentials to use to access that db)
 - run following script to create the sample database
